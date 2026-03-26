@@ -13,6 +13,7 @@ interface BaraKarsaEmblemProps {
  * Assets live in public/branding/.
  */
 export function BaraKarsaEmblem({ height = 180, style, className }: BaraKarsaEmblemProps) {
+  const base = import.meta.env.BASE_URL;
   return (
     <div
       className={className}
@@ -26,19 +27,19 @@ export function BaraKarsaEmblem({ height = 180, style, className }: BaraKarsaEmb
       }}
     >
       <img
-        src="/branding/bara-karsa-top.png"
+        src={`${base}branding/bara-karsa-top.png`}
         alt=""
         draggable={false}
         style={{ position: 'absolute', inset: 0, width: '100%', height: '75%', objectFit: 'contain', objectPosition: 'center top' }}
       />
       <img
-        src="/branding/bara-karsa-text.png"
+        src={`${base}branding/bara-karsa-text.png`}
         alt=""
         draggable={false}
         style={{ position: 'absolute', bottom: '12%', left: '10%', width: '80%', objectFit: 'contain' }}
       />
       <img
-        src="/branding/bara-karsa-bottom.png"
+        src={`${base}branding/bara-karsa-bottom.png`}
         alt=""
         draggable={false}
         style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '52%', objectFit: 'contain', objectPosition: 'center bottom' }}

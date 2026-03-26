@@ -56,6 +56,7 @@ export default function Landing() {
   const { events, berita } = useData();
   const upcomingEvents = events.filter(e => e.isUpcoming).slice(0, 3);
   const latestBerita = berita.slice(0, 3);
+  const base = import.meta.env.BASE_URL;
 
   return (
     <div style={{ position: 'relative', zIndex: 1, background: 'transparent', color: '#fff', overflowX: 'hidden' }}>
@@ -72,7 +73,7 @@ export default function Landing() {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: 'url(/branding/ftirs-collage.png)',
+            backgroundImage: `url(${base}branding/ftirs-collage.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.26,
@@ -225,7 +226,7 @@ export default function Landing() {
               <span style={{ whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'baseline', gap: '0.28em' }}>
                 <span>Membangun</span>
                 <img
-                  src="/branding/indsys-wordmark.png"
+                  src={`${base}branding/indsys-wordmark.png`}
                   alt="Indsys"
                   draggable={false}
                   style={{

@@ -15,6 +15,7 @@ const NAV_ITEMS = [
 export function Navbar() {
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const base = import.meta.env.BASE_URL;
 
   const isActive = (to: string) => {
     if (to === '/') return location.pathname === '/';
@@ -51,7 +52,7 @@ export function Navbar() {
               }}
             >
               <img
-                src="/branding/FTIRS.png"
+                src={`${base}branding/FTIRS.png`}
                 alt="FTIRS"
                 draggable={false}
                 style={{

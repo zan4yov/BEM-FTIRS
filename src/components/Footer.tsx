@@ -3,6 +3,7 @@ import { Instagram, Linkedin, ExternalLink, Mail } from 'lucide-react';
 import { BEM_FTIRS_LINKS } from '../branding/publicLinks';
 
 export function Footer() {
+  const base = import.meta.env.BASE_URL;
   return (
     <footer style={{
       position: 'relative',
@@ -24,7 +25,7 @@ export function Footer() {
                 flexShrink: 0,
               }}>
                 <img
-                  src="/branding/FTIRS.png"
+                  src={`${base}branding/FTIRS.png`}
                   alt="FTIRS"
                   draggable={false}
                   style={{
@@ -138,14 +139,14 @@ export function Footer() {
             <span style={{ color: 'rgba(255,255,255,0.22)', fontSize: 11, fontWeight: 300 }}>In Collaboration</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
               <img
-                src="/branding/indsys-wordmark.png"
+                src={`${base}branding/indsys-wordmark.png`}
                 alt="Indsys"
                 draggable={false}
                 style={{ height: 16, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.35))' }}
               />
               <span style={{ opacity: 0.55, transform: 'translateY(-0.5px)' }}>×</span>
               <img
-                src="/branding/Flexoo.png"
+                src={`${base}branding/Flexoo.png`}
                 alt="Flexoo Software House"
                 draggable={false}
                 style={{ height: 16, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.35))' }}

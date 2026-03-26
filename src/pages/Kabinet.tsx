@@ -48,6 +48,7 @@ function AvatarPlaceholder({ color, size = 96 }: { color: string; size?: number 
 }
 
 export default function Kabinet() {
+  const base = import.meta.env.BASE_URL;
   return (
     <div style={{ position: 'relative', zIndex: 1, background: 'transparent', color: '#fff', minHeight: '100vh' }}>
       {/* Hero */}
@@ -60,7 +61,7 @@ export default function Kabinet() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginBottom: 28 }}>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <img
-                  src="/branding/LOGO-KABINET.png"
+                  src={`${base}branding/LOGO-KABINET.png`}
                   alt="Logo Kabinet"
                   draggable={false}
                   style={{
@@ -71,7 +72,7 @@ export default function Kabinet() {
                 />
               </div>
               <img
-                src="/branding/NAMA-KABINET.png"
+                src={`${base}branding/NAMA-KABINET.png`}
                 alt="Nama Kabinet"
                 draggable={false}
                 style={{
