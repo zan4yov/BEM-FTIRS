@@ -187,20 +187,6 @@ export default function Landing() {
                   Fakultas FTIRS ITS
                 </div>
               </div>
-              <p
-                className="hide-mobile-gear-corner"
-                style={{
-                  marginTop: 10,
-                  fontSize: 10,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.28)',
-                  fontFamily: "'Barlow', sans-serif",
-                  fontWeight: 500,
-                }}
-              >
-                Seret roda gigi untuk memutar · gulir · ketuk dua kali
-              </p>
             </div>
           </FadeIn>
 
