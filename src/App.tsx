@@ -3,8 +3,6 @@ import { DataProvider } from './context/DataContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { SiteAtmosphere } from './components/SiteAtmosphere';
-import { FtirsTopBranding } from './components/FtirsTopBranding';
-
 import Landing from './pages/Landing';
 import Tentang from './pages/Tentang';
 import Departemen from './pages/Departemen';
@@ -16,7 +14,6 @@ import Berita from './pages/Berita';
 import BeritaDetail from './pages/BeritaDetail';
 import Galeri from './pages/Galeri';
 import Staf from './pages/Staf';
-
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminEvent from './pages/admin/AdminEvent';
@@ -39,7 +36,7 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
-      <FtirsTopBranding />
+      {/* <FtirsTopBranding /> */}
       <main style={{ position: 'relative', zIndex: 1, paddingTop: 0 }}>
         {children}
       </main>
