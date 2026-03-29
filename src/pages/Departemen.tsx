@@ -99,7 +99,7 @@ export default function Departemen() {
             Fakultas Teknologi Industri dan Rekayasa Sistem
           </div>
           <BlurText
-            text="6 Program Studi FTIRS ITS"
+            text="5 Departemen FTIRS ITS"
             className="heading"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#fff', lineHeight: 0.9, letterSpacing: '-2px', marginBottom: 24, display: 'block' }}
           />
