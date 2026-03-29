@@ -4,16 +4,20 @@ import { BlurText } from '../components/ui/BlurText';
 import { FadeIn } from '../components/ui/FadeIn';
 import { Orb } from '../components/ui/Orb';
 
+
 const DEPARTMENTS = [
   {
     name: 'Teknik Mesin',
-    shortName: 'DTME',
+    shortName: 'DTM',
     accreditations: ['AUN-QA', 'IABEE'],
     levels: ['S1', 'S2', 'S3'],
     notes: 'IUP + Joint Degree Jerman',
-    desc: 'Departemen Teknik Mesin FTIRS ITS adalah salah satu departemen teknik mesin tertua dan terkemuka di Indonesia, menghasilkan insinyur mesin yang andal untuk industri manufaktur, energi, dan otomotif.',
+    desc: 'Departemen Teknik Mesin FTIRS ITS adalah salah satu departemen teknik mesin tertua dan terkemuka di Indonesia, menghasilkan lulusan yang andal untuk industri manufaktur, energi, dan otomotif.',
     color: 'linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)',
-    icon: '⚙️',
+    icon:{
+      src: '/branding/logo-mesin-ts.png',
+      alt: 'Logo Departemen Teknik Mesin ITS'
+    },
     students: '~1.200',
     founded: '1957',
   },
@@ -25,7 +29,9 @@ const DEPARTMENTS = [
     notes: 'IUP',
     desc: 'Departemen Teknik Kimia FTIRS ITS memadukan ilmu kimia dan rekayasa untuk menghasilkan lulusan yang mampu berkontribusi di industri petrokimia, farmasi, pangan, dan lingkungan.',
     color: 'linear-gradient(135deg, #0891b2 0%, #164e63 100%)',
-    icon: '🧪',
+    icon:{
+      src: '/branding/tekkim-ts.png',
+    },
     students: '~950',
     founded: '1960',
   },
@@ -36,8 +42,10 @@ const DEPARTMENTS = [
     levels: ['S1', 'S2', 'S3'],
     notes: 'IUP',
     desc: 'Departemen Teknik Fisika FTIRS ITS berfokus pada instrumentasi, kontrol proses, dan sistem energi. Lulusannya banyak berkarier di industri migas, manufaktur, dan riset teknologi.',
-    color: 'linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)',
-    icon: '⚛️',
+    color: 'linear-gradient(135deg, #008000 0%, #228B22 100%)',
+    icon:{
+      src: '/branding/dtf-ts.png',
+    },
     students: '~800',
     founded: '1965',
   },
@@ -48,8 +56,10 @@ const DEPARTMENTS = [
     levels: ['S1', 'S2', 'S3'],
     notes: 'IUP',
     desc: 'Departemen Teknik Sistem dan Industri FTIRS ITS mengintegrasikan sistem, manajemen, dan teknologi untuk mengoptimalkan proses bisnis dan industri secara menyeluruh.',
-    color: 'linear-gradient(135deg, #d97706 0%, #92400e 100%)',
-    icon: '🏭',
+    color: 'linear-gradient(135deg, #7851A9 0%, #BF00FF 100%)',
+    icon:{
+      src: '/branding/logoTI1-ts.png',
+    },
     students: '~1.100',
     founded: '1971',
   },
@@ -60,22 +70,12 @@ const DEPARTMENTS = [
     levels: ['S1', 'S2'],
     notes: 'IUP',
     desc: 'Departemen Teknik Material dan Metalurgi FTIRS ITS mengkaji sifat, struktur, dan proses pengolahan material untuk aplikasi di industri manufaktur, pertambangan, dan teknologi maju.',
-    color: 'linear-gradient(135deg, #059669 0%, #065f46 100%)',
-    icon: '🔩',
+    color: 'linear-gradient(135deg, #D8D8D8 0%, #C0C0C0 100%)',
+    icon:{
+      src: '/branding/logo-dtmm-ts.png',
+    },
     students: '~700',
     founded: '1984',
-  },
-  {
-    name: 'Teknik Pangan',
-    shortName: 'DTP',
-    accreditations: ['—'],
-    levels: ['S1'],
-    notes: 'Program baru',
-    desc: 'Departemen Teknik Pangan FTIRS ITS merupakan program studi termuda yang hadir untuk menjawab kebutuhan akan tenaga ahli di bidang teknologi pangan, ketahanan pangan, dan industri makanan-minuman.',
-    color: 'linear-gradient(135deg, #db2777 0%, #831843 100%)',
-    icon: '🌾',
-    students: '~300',
-    founded: '2020',
   },
 ];
 
@@ -122,7 +122,17 @@ export default function Departemen() {
                     {/* Header */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
                       <div>
-                        <div style={{ fontSize: 32, marginBottom: 8, lineHeight: 1 }}>{dept.icon}</div>
+                        <div style={{ width: 32, height: 32, marginBottom: 8 }}>
+                          <img 
+                            src={dept.icon.src} 
+                            alt={dept.icon.alt}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'contain'
+                            }}
+                          />
+                        </div>
                         <h3 className="heading" style={{ fontSize: 'clamp(1.3rem, 2vw, 1.7rem)', color: '#fff', lineHeight: 1.1, marginBottom: 4 }}>{dept.name}</h3>
                         <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', fontWeight: 400 }}>{dept.shortName}</span>
                       </div>
@@ -132,10 +142,10 @@ export default function Departemen() {
                       </div>
                     </div>
 
-                    <p style={{ ...BODY_TEXT, fontSize: 13, marginBottom: 20 }}>{dept.desc}</p>
+                    <p style={{ ...BODY_TEXT, fontSize: 13, marginBottom: 24 }}>{dept.desc}</p>
 
                     {/* Badges */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16, marginTop: 16 }}>
                       {dept.accreditations.filter(a => a !== '—').map(acc => (
                         <span key={acc} style={{
                           fontSize: 10, padding: '3px 10px', borderRadius: 9999,
