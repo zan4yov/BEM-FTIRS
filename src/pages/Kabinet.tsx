@@ -25,6 +25,33 @@ const KEPALA_DIVISI = [
   { divisi: 'Minat & Bakat', name: 'Tiara Kesuma', dept: 'Teknik Pangan', icon: '⭐' },
 ];
 
+const FILOSOFI_LOGO = [
+  {
+    title: 'Elemen Api',
+    icon: {
+      src: '/branding/elemen-api.png',
+      alt: 'Elemen Api',
+    },
+    desc: 'Menunjukkan bahwa semangat ini tidak meledak tanpa kendali, melainkan terarah dan mampu beradaptasi, menjadi kekuatan, semangat yang bisa dikendalikan dan diarahkan menuju perubahan.',
+  },
+  {
+    title: 'Lima Bongkahan Batu Bara',
+    icon: {
+      src: '/branding/bongkahan-batu-bara.png',
+      alt: 'Lima Bongkahan Batu Bara',
+    },
+    desc: 'Lima buah lingkaran yang terkikis diibaratkan seperti batu bara, yaitu melambangkan energi atau bahan bakar untuk membarakan semangat. Berada di naungan tangan ini sebagai perwujudan 5 HMD yang dinaungi, senantiasa bergerak bersama berjuang untuk hal yang besar.',
+  },
+  {
+    title: 'Tangan Yang Melingkar',
+    icon: {
+      src: '/branding/tangan-yang-melingkar.png',
+      alt: 'Tangan Yang Melingkar',
+    },
+    desc: 'Sebuah tangan yang menggenggam api, melambangkan tekad yang membara dan keberanian yang tak tergoyahkan untuk pergerakan yang berkelanjutan. Meski tangan itu terbakar, ia tetap menggenggam api dengan kuat. Tangan juga melingkari lima buah lingkaran yang berarti kita sebagai BEMF mewadahi dan menaungi ke-lima HMD yang ada di FT-IRS.',
+  },
+];
+
 const BODY_TEXT: React.CSSProperties = {
   fontFamily: "'Barlow', sans-serif",
   fontSize: 14,
@@ -93,8 +120,70 @@ export default function Kabinet() {
             style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#fff', lineHeight: 0.9, letterSpacing: '-2px', marginBottom: 24, display: 'block' }}
           />
           <p style={{ ...BODY_TEXT, fontSize: 15, maxWidth: 560, margin: '0 auto' }}>
-            Badan Pengurus Harian (BPH) dan Kepala Divisi BEM FTIRS ITS periode kepengurusan 2025 yang berkomitmen untuk melayani 6.000+ mahasiswa Indsys.
+            Badan Pengurus Harian (BPH) dan Kepala Divisi BEM FTIRS ITS periode kepengurusan 2025 yang berkomitmen untuk melayani 6.000+ mahasiswa INDSYS.
           </p>
+        </div>
+      </section>
+
+      {/* Filosofi Logo Section */}
+      <section style={{ padding: '0 24px 80px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <FadeIn>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div className="lg" style={{ display: 'inline-block', borderRadius: 9999, padding: '5px 14px', marginBottom: 16, fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.7)' }}>
+                Identitas Visual
+              </div>
+              <h2 className="heading" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: '#fff' }}>Filosofi Logo.</h2>
+            </div>
+          </FadeIn>
+
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+            gap: 24 
+          }}>
+            {FILOSOFI_LOGO.map((item, i) => (
+              <FadeIn key={item.title} delay={i * 0.1}>
+                <div 
+                  className="lg card-hover" 
+                  style={{ 
+                    borderRadius: 20, 
+                    padding: '36px 32px', 
+                    height: '100%', 
+                    display: 'flex', 
+                    flexDirection: 'column' 
+                  }}
+                >
+                  <div 
+                    style={{ 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      width: 96, 
+                      height: 96,  
+                      marginBottom: 24,  
+                    }}
+                  >
+                    <img 
+                      src={item.icon.src}
+                      alt={item.icon.alt}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain"
+                      }}
+                    />
+                  </div>
+                  <h3 className="heading" style={{ fontSize: 22, color: '#fff', marginBottom: 16, lineHeight: 1.3 }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ ...BODY_TEXT, fontSize: 14, lineHeight: 1.8, margin: 0, flexGrow: 1 }}>
+                    {item.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
