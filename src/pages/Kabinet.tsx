@@ -187,6 +187,59 @@ export default function Kabinet() {
         </div>
       </section>
 
+      {/* Vision Mission */}
+      <section style={{ padding: '0 24px 100px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <FadeIn>
+            <div className="lg" style={{ borderRadius: 24, padding: '48px 40px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 72 }}>
+                <div>
+                  <div
+                    style={{
+                      background: "#dc2626",
+                      display: 'inline-block',
+                      padding: '4px 12px',
+                      marginBottom: 16
+                    }}
+                  >
+                    <h3 className="heading" style={{ fontSize: 22, color: '#fff' }}>Visi</h3>
+                  </div>
+                  <p style={{ ...BODY_TEXT, color: '#fff', fontSize: 14, lineHeight: 1.8 }}>
+                    Mewujudkan BEM FTIRS ITS sebagai organisasi mahasiswa yang progresif, inklusif, dan berdampak nyata dalam meningkatkan kualitas kehidupan akademik dan non-akademik mahasiswa Indsys menuju Indonesia Emas 2045.
+                  </p>
+                </div>
+                <div>
+                  <div
+                    style={{
+                      background: "#dc2626",
+                      display: 'inline-block',
+                      padding: '4px 12px',
+                      marginBottom: 16
+                    }}
+                  >
+                    <h3 className="heading" style={{ fontSize: 22, color: '#fff'}}>Misi</h3>
+                  </div>
+                  <ul style={{ ...BODY_TEXT, fontSize: 14, lineHeight: 1.9, paddingLeft: 0, listStyle: 'none', color: '#fff' }}>
+                    {[
+                      'Mengawal dan memperjuangkan kebijakan yang berpihak kepada mahasiswa',
+                      'Memfasilitasi pengembangan kapasitas dan kompetensi mahasiswa Indsys',
+                      'Membangun jaringan kolaborasi yang kuat lintas institusi dan industri',
+                      'Menyelenggarakan program sosial yang bermakna bagi masyarakat sekitar',
+                      'Menjaga transparansi dan akuntabilitas dalam tata kelola organisasi',
+                    ].map((m, i) => (
+                      <li key={i} style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                        <span style={{ color: '#dc2626', flexShrink: 0, marginTop: 2 }}>▸</span>
+                        {m}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* BPH Section */}
       <section style={{ padding: '20px 24px 80px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -241,43 +294,6 @@ export default function Kabinet() {
               </FadeIn>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Vision Mission */}
-      <section style={{ padding: '0 24px 100px' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto' }}>
-          <FadeIn>
-            <div className="lg" style={{ borderRadius: 24, padding: '48px 40px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 48 }}>
-                <div>
-                  <div className="lgs-red" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', marginBottom: 20, fontSize: 18 }}>🎯</div>
-                  <h3 className="heading" style={{ fontSize: 22, color: '#fff', marginBottom: 16 }}>Visi</h3>
-                  <p style={{ ...BODY_TEXT, fontSize: 14, lineHeight: 1.8 }}>
-                    Mewujudkan BEM FTIRS ITS sebagai organisasi mahasiswa yang progresif, inklusif, dan berdampak nyata dalam meningkatkan kualitas kehidupan akademik dan non-akademik mahasiswa Indsys menuju Indonesia Emas 2045.
-                  </p>
-                </div>
-                <div>
-                  <div className="lgs" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', marginBottom: 20, fontSize: 18 }}>🚀</div>
-                  <h3 className="heading" style={{ fontSize: 22, color: '#fff', marginBottom: 16 }}>Misi</h3>
-                  <ul style={{ ...BODY_TEXT, fontSize: 14, lineHeight: 1.9, paddingLeft: 0, listStyle: 'none' }}>
-                    {[
-                      'Mengawal dan memperjuangkan kebijakan yang berpihak kepada mahasiswa',
-                      'Memfasilitasi pengembangan kapasitas dan kompetensi mahasiswa Indsys',
-                      'Membangun jaringan kolaborasi yang kuat lintas institusi dan industri',
-                      'Menyelenggarakan program sosial yang bermakna bagi masyarakat sekitar',
-                      'Menjaga transparansi dan akuntabilitas dalam tata kelola organisasi',
-                    ].map((m, i) => (
-                      <li key={i} style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                        <span style={{ color: '#dc2626', flexShrink: 0, marginTop: 2 }}>▸</span>
-                        {m}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
         </div>
       </section>
     </div>
