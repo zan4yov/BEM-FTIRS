@@ -42,7 +42,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(405).json({ error: 'Method not allowed' });
   } catch (e) {
-    const msg = e instanceof Error ? e.message : 'Unknown error';
+    const msg =
+      e instanceof Error
+        ? `${e.name}: ${e.message}`
+        : typeof e === 'string'
+          ? e
+          : JSON.stringify(e);
+    // eslint-disable-next-line no-console
+    console.error('[api/events] error', e);
     return res.status(500).json({ error: msg });
   }
 }
