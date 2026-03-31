@@ -58,7 +58,12 @@ export default function BeritaDetail() {
 
           {/* Cover image */}
           <FadeIn delay={0.1}>
-            <div style={{ height: 380, background: item.imageColor, borderRadius: 20, marginBottom: 48 }} />
+            <div style={{ 
+              height: 380, 
+              background: item.image ? `url(${item.image}) center/cover no-repeat` : item.imageColor, 
+              borderRadius: 20, 
+              marginBottom: 48 
+            }} />
           </FadeIn>
 
           {/* Body */}
@@ -97,7 +102,10 @@ export default function BeritaDetail() {
                 <FadeIn key={rel.id} delay={i * 0.08}>
                   <Link to={`/berita/${rel.id}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
                     <div className="lg card-hover" style={{ borderRadius: 18, overflow: 'hidden', height: '100%' }}>
-                      <div style={{ height: 140, background: rel.imageColor }} />
+                      <div style={{ 
+                        height: 140, 
+                        background: rel.image ? `url(${rel.image}) center/cover no-repeat` : rel.imageColor
+                      }} />
                       <div style={{ padding: '18px 20px' }}>
                         <h4 style={{ fontSize: 14, fontWeight: 600, color: '#fff', marginBottom: 8, lineHeight: 1.3 }}>{rel.title}</h4>
                         <p style={{ ...BODY_TEXT, fontSize: 12, lineHeight: 1.6, marginBottom: 10 }}>{rel.excerpt.slice(0, 80)}…</p>
