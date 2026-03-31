@@ -80,7 +80,10 @@ export default function Berita() {
               <Link to={`/berita/${featured.id}`} style={{ textDecoration: 'none', display: 'block', marginBottom: 48 }}>
                 <div className="lg card-hover" style={{ borderRadius: 24, overflow: 'hidden' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-                    <div style={{ height: 340, background: featured.imageColor }} />
+                    <div style={{ 
+                      height: 340, 
+                      background: featured.image ? `url(${featured.image}) center/cover no-repeat` : featured.imageColor
+                    }} />
                     <div style={{ padding: '36px 36px' }}>
                       <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap', alignItems: 'center' }}>
                         <span style={{ fontSize: 10, padding: '3px 10px', borderRadius: 9999, background: 'rgba(220,38,38,0.15)', color: 'rgba(220,38,38,0.9)', fontWeight: 600 }}>
@@ -112,7 +115,10 @@ export default function Berita() {
                 <FadeIn key={item.id} delay={i * 0.08}>
                   <Link to={`/berita/${item.id}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
                     <div className="lg card-hover" style={{ borderRadius: 18, overflow: 'hidden', height: '100%' }}>
-                      <div style={{ height: 160, background: item.imageColor }} />
+                      <div style={{ 
+                        height: 160, 
+                        background: item.image ? `url(${item.image}) center/cover no-repeat` : item.imageColor
+                      }} />
                       <div style={{ padding: '20px 22px' }}>
                         <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap', alignItems: 'center' }}>
                           <span style={{ fontSize: 10, padding: '3px 10px', borderRadius: 9999, background: 'rgba(220,38,38,0.15)', color: 'rgba(220,38,38,0.9)', fontWeight: 600 }}>

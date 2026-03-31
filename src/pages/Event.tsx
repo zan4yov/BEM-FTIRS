@@ -182,7 +182,11 @@ export default function EventPage() {
               {filtered.map((ev, i) => (
                 <FadeIn key={ev.id} delay={i * 0.07}>
                   <div className="lg card-hover" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                    <div style={{ height: 180, background: ev.imageColor, position: 'relative' }}>
+                    <div style={{ 
+                      height: 180, 
+                      background: ev.image ? `url(${ev.image}) center/cover no-repeat` : ev.imageColor,
+                      position: 'relative' 
+                    }}>
                       <div style={{ position: 'absolute', top: 12, left: 12, display: 'flex', gap: 6 }}>
                         <span style={{
                           fontSize: 10, padding: '3px 10px', borderRadius: 9999, fontWeight: 600, fontFamily: "'Barlow', sans-serif",

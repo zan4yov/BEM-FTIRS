@@ -77,7 +77,11 @@ export default function AdminBerita() {
                   <tr key={item.id} style={{ borderBottom: i < berita.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
                     <td style={{ padding: '14px 18px' }}>
                       <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-                        <div style={{ width: 32, height: 32, borderRadius: 6, background: item.imageColor, flexShrink: 0 }} />
+                        {item.image ? (
+                          <img src={item.image} alt="" style={{ width: 32, height: 32, borderRadius: 6, objectFit: 'cover', flexShrink: 0 }} />
+                        ) : (
+                          <div style={{ width: 32, height: 32, borderRadius: 6, background: item.imageColor, flexShrink: 0 }} />
+                        )}
                         <div style={{ fontSize: 13, fontWeight: 500, color: '#fff', lineHeight: 1.3 }}>{item.title.slice(0, 50)}{item.title.length > 50 ? '…' : ''}</div>
                       </div>
                     </td>
@@ -108,8 +112,8 @@ export default function AdminBerita() {
 
       {/* Form Dialog */}
       {(dialog === 'add' || dialog === 'edit') && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 400, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-          <div className="lgs" style={{ borderRadius: 20, padding: '32px', width: '100%', maxWidth: 560, maxHeight: '85vh', overflowY: 'auto' }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 400, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)', overflowY: 'auto', padding: 24, boxSizing: 'border-box' }}>
+          <div className="lgs" style={{ borderRadius: 20, padding: '32px', width: '100%', maxWidth: 560, margin: '40px auto', background: '#111', boxSizing: 'border-box' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
               <h3 style={{ fontSize: 18, fontWeight: 600, color: '#fff' }}>{dialog === 'add' ? 'Tambah Berita' : 'Edit Berita'}</h3>
               <button onClick={closeDialog} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.5)', padding: 4 }}><X size={18} /></button>
@@ -153,7 +157,7 @@ export default function AdminBerita() {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: 11, color: 'rgba(255,255,255,0.5)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.8 }}>Warna Cover</label>
+                <label style={{ display: 'block', fontSize: 11, color: 'rgba(255,255,255,0.5)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.8 }}>Warna Cover (Alternatif)</label>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {COLORS.map(c => (
                     <div key={c} onClick={() => setForm(prev => ({ ...prev, imageColor: c }))}
@@ -161,6 +165,31 @@ export default function AdminBerita() {
                     />
                   ))}
                 </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: 11, color: 'rgba(255,255,255,0.5)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.8 }}>Gambar Cover Berita</label>
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  onChange={e => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = () => setForm(prev => ({ ...prev, image: reader.result as string }));
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                  style={{ ...INPUT_STYLE, padding: '8px', cursor: 'pointer' }}
+                />
+                {form.image && (
+                  <div style={{ marginTop: 10, position: 'relative', display: 'inline-block' }}>
+                    <img src={form.image} alt="Preview" style={{ height: 80, borderRadius: 8, objectFit: 'cover' }} />
+                    <button onClick={() => setForm(prev => ({ ...prev, image: undefined }))} style={{ position: 'absolute', top: -6, right: -6, background: 'rgba(220,38,38,1)', color: 'white', border: 'none', borderRadius: '50%', width: 22, height: 22, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <X size={12} />
+                    </button>
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
@@ -173,8 +202,8 @@ export default function AdminBerita() {
       )}
 
       {dialog === 'delete' && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 400, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-          <div className="lgs" style={{ borderRadius: 20, padding: '32px', width: '100%', maxWidth: 360, textAlign: 'center' }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 400, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)', overflowY: 'auto', padding: 24, boxSizing: 'border-box' }}>
+          <div className="lgs" style={{ borderRadius: 20, padding: '32px', width: '100%', maxWidth: 360, margin: '40px auto', textAlign: 'center', background: '#111', boxSizing: 'border-box' }}>
             <div style={{ fontSize: 40, marginBottom: 16 }}>🗑️</div>
             <h3 style={{ fontSize: 18, fontWeight: 600, color: '#fff', marginBottom: 10 }}>Hapus Berita?</h3>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', marginBottom: 24, fontFamily: "'Barlow', sans-serif", fontWeight: 300 }}>Tindakan ini tidak dapat dibatalkan.</p>

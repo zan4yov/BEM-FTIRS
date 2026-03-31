@@ -7,6 +7,7 @@ export interface Event {
   location: string;
   isUpcoming: boolean;
   imageColor: string;
+  image?: string;
 }
 
 export interface Berita {
@@ -18,6 +19,7 @@ export interface Berita {
   publishedAt: string;
   category: 'kegiatan' | 'prestasi' | 'pengumuman' | 'sosial';
   imageColor: string;
+  image?: string;
 }
 
 export interface GalleryItem {
