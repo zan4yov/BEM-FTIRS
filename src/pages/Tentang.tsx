@@ -3,6 +3,8 @@ import { BEM_FTIRS_LINKS } from '../branding/publicLinks';
 import { BlurText } from '../components/ui/BlurText';
 import { FadeIn } from '../components/ui/FadeIn';
 import { Orb } from '../components/ui/Orb';
+import type { AppIconName } from '../components/icons/AppIcon';
+import { AppIcon } from '../components/icons/AppIcon';
 
 const BODY_TEXT: React.CSSProperties = {
   fontFamily: "'Barlow', sans-serif",
@@ -70,14 +72,18 @@ export default function Tentang() {
             <div className="lg" style={{ display: 'inline-block', borderRadius: 9999, padding: '5px 14px', marginBottom: 24, fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.7)' }}>Visi & Misi BEM FTIRS</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20 }}>
               <div className="lg" style={{ borderRadius: 20, padding: '32px' }}>
-                <div style={{ fontSize: 32, marginBottom: 16 }}>🎯</div>
+                <div style={{ width: 32, height: 32, marginBottom: 16, color: 'rgba(255,255,255,0.85)' }}>
+                  <AppIcon name="target" size={32} />
+                </div>
                 <h3 className="heading" style={{ fontSize: 22, color: '#fff', marginBottom: 16 }}>Visi</h3>
                 <p style={{ ...BODY_TEXT, fontSize: 14, lineHeight: 1.85 }}>
                   Mewujudkan BEM FTIRS ITS sebagai organisasi mahasiswa yang progresif, inklusif, dan berdampak nyata dalam meningkatkan kualitas kehidupan akademik dan non-akademik mahasiswa Indsys menuju Indonesia Emas 2045.
                 </p>
               </div>
               <div className="lg" style={{ borderRadius: 20, padding: '32px' }}>
-                <div style={{ fontSize: 32, marginBottom: 16 }}>🚀</div>
+                <div style={{ width: 32, height: 32, marginBottom: 16, color: 'rgba(255,255,255,0.85)' }}>
+                  <AppIcon name="rocket" size={32} />
+                </div>
                 <h3 className="heading" style={{ fontSize: 22, color: '#fff', marginBottom: 16 }}>Misi</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   {[
@@ -105,14 +111,16 @@ export default function Tentang() {
             <div className="lg" style={{ display: 'inline-block', borderRadius: 9999, padding: '5px 14px', marginBottom: 24, fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.7)' }}>Nilai Organisasi</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16, marginBottom: 0 }}>
               {[
-                { icon: '🔥', title: 'Integritas', desc: 'Kami berkomitmen pada kejujuran, transparansi, dan akuntabilitas dalam setiap aspek kepengurusan.' },
-                { icon: '💡', title: 'Inovasi', desc: 'Kami mendorong ide-ide segar dan solusi kreatif dalam menghadapi tantangan mahasiswa modern.' },
-                { icon: '🤝', title: 'Inklusivitas', desc: 'Kami menjamin setiap mahasiswa FTIRS, tanpa terkecuali, mendapatkan kesempatan yang sama.' },
-                { icon: '🌱', title: 'Keberlanjutan', desc: 'Kami merancang program yang berdampak jangka panjang untuk generasi mahasiswa FTIRS berikutnya.' },
+                { icon: 'fire' as AppIconName, title: 'Integritas', desc: 'Kami berkomitmen pada kejujuran, transparansi, dan akuntabilitas dalam setiap aspek kepengurusan.' },
+                { icon: 'bulb' as AppIconName, title: 'Inovasi', desc: 'Kami mendorong ide-ide segar dan solusi kreatif dalam menghadapi tantangan mahasiswa modern.' },
+                { icon: 'handshake' as AppIconName, title: 'Inklusivitas', desc: 'Kami menjamin setiap mahasiswa FTIRS, tanpa terkecuali, mendapatkan kesempatan yang sama.' },
+                { icon: 'sprout' as AppIconName, title: 'Keberlanjutan', desc: 'Kami merancang program yang berdampak jangka panjang untuk generasi mahasiswa FTIRS berikutnya.' },
               ].map((v, i) => (
                 <FadeIn key={v.title} delay={i * 0.1}>
                   <div className="lg card-hover" style={{ borderRadius: 18, padding: '24px' }}>
-                    <div style={{ fontSize: 32, marginBottom: 14 }}>{v.icon}</div>
+                    <div style={{ width: 32, height: 32, marginBottom: 14, color: 'rgba(255,255,255,0.85)' }}>
+                      <AppIcon name={v.icon} size={32} />
+                    </div>
                     <h4 className="heading" style={{ fontSize: 19, color: '#fff', marginBottom: 10 }}>{v.title}</h4>
                     <p style={{ ...BODY_TEXT, fontSize: 13, lineHeight: 1.65 }}>{v.desc}</p>
                   </div>

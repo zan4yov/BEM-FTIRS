@@ -4,6 +4,7 @@ import { DIVISIONS } from './Divisi';
 import { FadeIn } from '../components/ui/FadeIn';
 import { BlurText } from '../components/ui/BlurText';
 import { Orb } from '../components/ui/Orb';
+import { AppIcon } from '../components/icons/AppIcon';
 
 const BODY_TEXT: React.CSSProperties = {
   fontFamily: "'Barlow', sans-serif",
@@ -38,7 +39,9 @@ export default function DivisiDetail() {
 
           <div style={{ display: 'flex', gap: 32, alignItems: 'flex-start', flexWrap: 'wrap' }}>
             <div style={{ flex: '1 1 400px' }}>
-              <div style={{ fontSize: 56, marginBottom: 16 }}>{div.icon}</div>
+              <div style={{ width: 56, height: 56, marginBottom: 16, color: 'rgba(255,255,255,0.85)' }}>
+                <AppIcon name={div.icon} size={56} />
+              </div>
               <BlurText
                 text={div.name}
                 className="heading"
@@ -73,7 +76,9 @@ export default function DivisiDetail() {
             <FadeIn>
               <div className="lg" style={{ borderRadius: 20, padding: '28px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'rgba(220,38,38,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>🎯</div>
+                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'rgba(220,38,38,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.85)' }}>
+                    <AppIcon name="target" size={18} />
+                  </div>
                   <h3 className="heading" style={{ fontSize: 20, color: '#fff' }}>Visi</h3>
                 </div>
                 <p style={{ ...BODY_TEXT, fontSize: 14, lineHeight: 1.8 }}>{div.vision}</p>
@@ -82,7 +87,9 @@ export default function DivisiDetail() {
             <FadeIn delay={0.1}>
               <div className="lg" style={{ borderRadius: 20, padding: '28px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'rgba(220,38,38,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>🚀</div>
+                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'rgba(220,38,38,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.85)' }}>
+                    <AppIcon name="rocket" size={18} />
+                  </div>
                   <h3 className="heading" style={{ fontSize: 20, color: '#fff' }}>Misi</h3>
                 </div>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -136,9 +143,9 @@ export default function DivisiDetail() {
                     width: 56, height: 56, borderRadius: '50%',
                     background: div.color, margin: '0 auto 12px',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 22, opacity: 0.7,
+                    color: 'rgba(255,255,255,0.85)',
                   }}>
-                    👤
+                    <AppIcon name="user" size={24} style={{ opacity: 0.9 }} />
                   </div>
                   <div style={{ fontSize: 13, fontWeight: 500, color: '#fff', lineHeight: 1.3 }}>{member}</div>
                   <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 4, fontWeight: 300 }}>

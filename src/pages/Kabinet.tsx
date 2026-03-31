@@ -2,6 +2,7 @@ import { BlurText } from '../components/ui/BlurText';
 import { FadeIn } from '../components/ui/FadeIn';
 import { Orb } from '../components/ui/Orb';
 import { BaraText } from '../components/brand/BaraText';
+import { AppIcon } from '../components/icons/AppIcon';
 
 const BPH = [
   { role: 'Ketua BEM FTIRS', name: 'Ahmad Fadhillah Ramadhan', dept: 'Teknik Sistem & Industri', color: 'linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)' },
@@ -13,16 +14,16 @@ const BPH = [
 ];
 
 const KEPALA_DIVISI = [
-  { divisi: 'Kesekretariatan', name: 'Muhammad Fauzan', dept: 'Teknik Mesin', icon: '📋' },
-  { divisi: 'Keuangan', name: 'Rina Andriani', dept: 'Teknik Kimia', icon: '💰' },
-  { divisi: 'Hubungan Luar', name: 'Dimas Aditya', dept: 'Teknik Sistem & Industri', icon: '🌐' },
-  { divisi: 'Kajian Strategis & Advokasi', name: 'Luthfia Zahra', dept: 'Teknik Fisika', icon: '🔍' },
-  { divisi: 'Pengembangan SDM', name: 'Aryo Wibisono', dept: 'Teknik Mesin', icon: '🎯' },
-  { divisi: 'Kewirausahaan', name: 'Mega Silviana', dept: 'Teknik Kimia', icon: '💼' },
-  { divisi: 'Sosial Masyarakat', name: 'Rizky Pratama', dept: 'Teknik Sistem & Industri', icon: '🤲' },
-  { divisi: 'Media, Komunikasi & Informasi', name: 'Salsabila Nur', dept: 'Teknik Fisika', icon: '📱' },
-  { divisi: 'Olahraga, Seni & Budaya', name: 'Galih Wicaksono', dept: 'Teknik Material', icon: '🎨' },
-  { divisi: 'Minat & Bakat', name: 'Tiara Kesuma', dept: 'Teknik Pangan', icon: '⭐' },
+  { divisi: 'Kesekretariatan', name: 'Muhammad Fauzan', dept: 'Teknik Mesin', icon: 'clipboard' as const },
+  { divisi: 'Keuangan', name: 'Rina Andriani', dept: 'Teknik Kimia', icon: 'coins' as const },
+  { divisi: 'Hubungan Luar', name: 'Dimas Aditya', dept: 'Teknik Sistem & Industri', icon: 'globe' as const },
+  { divisi: 'Kajian Strategis & Advokasi', name: 'Luthfia Zahra', dept: 'Teknik Fisika', icon: 'search' as const },
+  { divisi: 'Pengembangan SDM', name: 'Aryo Wibisono', dept: 'Teknik Mesin', icon: 'target' as const },
+  { divisi: 'Kewirausahaan', name: 'Mega Silviana', dept: 'Teknik Kimia', icon: 'briefcase' as const },
+  { divisi: 'Sosial Masyarakat', name: 'Rizky Pratama', dept: 'Teknik Sistem & Industri', icon: 'hands' as const },
+  { divisi: 'Media, Komunikasi & Informasi', name: 'Salsabila Nur', dept: 'Teknik Fisika', icon: 'phone' as const },
+  { divisi: 'Olahraga, Seni & Budaya', name: 'Galih Wicaksono', dept: 'Teknik Material', icon: 'palette' as const },
+  { divisi: 'Minat & Bakat', name: 'Tiara Kesuma', dept: 'Teknik Pangan', icon: 'star' as const },
 ];
 
 const FILOSOFI_LOGO = [
@@ -69,7 +70,7 @@ function AvatarPlaceholder({ color, size = 96 }: { color: string; size?: number 
       fontSize: size * 0.35, color: 'rgba(255,255,255,0.5)',
       boxShadow: '0 0 20px rgba(0,0,0,0.4)',
     }}>
-      👤
+      <AppIcon name="user" size={Math.round(size * 0.38)} style={{ opacity: 0.7 }} />
     </div>
   );
 }
@@ -285,9 +286,13 @@ export default function Kabinet() {
             {KEPALA_DIVISI.map((person, i) => (
               <FadeIn key={person.name} delay={i * 0.07}>
                 <div className="lg card-hover" style={{ borderRadius: 16, padding: '22px 20px', textAlign: 'center' }}>
-                  <div style={{ fontSize: 32, marginBottom: 12 }}>{person.icon}</div>
+                  <div style={{ width: 36, height: 36, margin: '0 auto 12px', color: 'rgba(255,255,255,0.75)' }}>
+                    <AppIcon name={person.icon} size={36} />
+                  </div>
                   <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 8 }}>{person.divisi}</div>
-                  <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg, rgba(220,38,38,0.2), rgba(100,10,10,0.3))', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>👤</div>
+                  <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg, rgba(220,38,38,0.2), rgba(100,10,10,0.3))', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.7)' }}>
+                    <AppIcon name="user" size={22} />
+                  </div>
                   <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', marginBottom: 4 }}>{person.name}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', fontWeight: 300 }}>{person.dept}</div>
                 </div>

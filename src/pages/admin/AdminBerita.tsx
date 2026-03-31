@@ -3,6 +3,7 @@ import { AdminLayout } from '../../components/AdminLayout';
 import { useData } from '../../context/DataContext';
 import type { Berita } from '../../types';
 import { Plus, Pencil, Trash2, X } from 'lucide-react';
+import { AppIcon } from '../../components/icons/AppIcon';
 
 const EMPTY: Omit<Berita, 'id'> = {
   title: '', excerpt: '', body: '', author: '', publishedAt: new Date().toISOString().slice(0, 16),
@@ -175,7 +176,9 @@ export default function AdminBerita() {
       {dialog === 'delete' && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 400, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <div className="lgs" style={{ borderRadius: 20, padding: '32px', width: '100%', maxWidth: 360, textAlign: 'center' }}>
-            <div style={{ fontSize: 40, marginBottom: 16 }}>🗑️</div>
+            <div style={{ width: 44, height: 44, margin: '0 auto 16px', color: 'rgba(220,38,38,0.9)' }}>
+              <AppIcon name="trash" size={44} />
+            </div>
             <h3 style={{ fontSize: 18, fontWeight: 600, color: '#fff', marginBottom: 10 }}>Hapus Berita?</h3>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', marginBottom: 24, fontFamily: "'Barlow', sans-serif", fontWeight: 300 }}>Tindakan ini tidak dapat dibatalkan.</p>
             <div style={{ display: 'flex', gap: 10 }}>
