@@ -5,6 +5,8 @@ import { MachineGear, type MachineGearProps } from './MachineGear';
 type InteractiveMachineGearProps = MachineGearProps & {
   /** Hint for screen readers */
   ariaLabel?: string;
+  /** Kecepatan putaran otomatis dalam derajat per frame */
+  autoSpinSpeed?: number;
 };
 
 function pointerAngleDeg(el: HTMLElement, clientX: number, clientY: number): number {
@@ -15,14 +17,15 @@ function pointerAngleDeg(el: HTMLElement, clientX: number, clientY: number): num
 }
 
 /**
- * Draggable machine gear: seret memutar, scroll wheel, double-click putaran cepat.
+ * Draggable machine gear: putaran otomatis, seret memutar, scroll wheel, double-click putaran cepat.
  */
 export function InteractiveMachineGear({
   size = 64,
   variant = 'outline',
   className,
   style,
-  ariaLabel = 'Roda gigi — seret untuk memutar, gulir untuk memutar, ketuk dua kali untuk putaran cepat',
+  ariaLabel = 'Roda gigi — otomatis berputar, seret untuk memutar manual',
+  autoSpinSpeed = 0.5,
 }: InteractiveMachineGearProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
@@ -38,6 +41,22 @@ export function InteractiveMachineGear({
     mq.addEventListener('change', onChange);
     return () => mq.removeEventListener('change', onChange);
   }, []);
+
+
+  useEffect(() => {
+    if (dragging || reduceMotion || autoSpinSpeed === 0) return;
+
+    let animationFrameId: number;
+
+    const spin = () => {
+      setRotation(r => r + autoSpinSpeed);
+      animationFrameId = requestAnimationFrame(spin);
+    };
+
+    animationFrameId = requestAnimationFrame(spin);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [dragging, reduceMotion, autoSpinSpeed]);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     e.preventDefault();
@@ -95,6 +114,8 @@ export function InteractiveMachineGear({
     [reduceMotion],
   );
 
+  const isAutoSpinning = !dragging && !reduceMotion && autoSpinSpeed !== 0;
+
   return (
     <div
       ref={wrapRef}
@@ -116,8 +137,9 @@ export function InteractiveMachineGear({
         userSelect: 'none',
         WebkitUserSelect: 'none',
         transform: `rotate(${rotation}deg)`,
-        transition: dragging ? 'none' : 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        transition: (dragging || isAutoSpinning) ? 'none' : 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
         filter: dragging ? 'drop-shadow(0 0 14px rgba(220,38,38,0.45))' : undefined,
+        ...style,
       }}
       onKeyDown={e => {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
@@ -143,7 +165,7 @@ export function InteractiveMachineGear({
         }
       }}
     >
-      <MachineGear size={size} variant={variant} style={style} />
+      <MachineGear size={size} variant={variant} />
     </div>
   );
 }

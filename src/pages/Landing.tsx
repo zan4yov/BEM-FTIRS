@@ -37,7 +37,7 @@ const BODY_TEXT: React.CSSProperties = {
   fontFamily: "'Barlow', sans-serif",
   fontSize: 14,
   fontWeight: 300,
-  color: 'rgba(255,255,255,0.5)',
+  color: 'rgba(255,255,255)',
   lineHeight: 1.75,
 };
 
@@ -137,7 +137,7 @@ export default function Landing() {
               </div>
             </div>
           </FadeIn>
-
+              <MachineGearWatermark size={280} opacity={0.09} style={{ top: '42%', left: '-20%', transform: 'rotate(18deg)' }} />
           {/* Stacked bars + machine gears (HMIT-style), Fakultas Merah palette */}
           <FadeIn delay={0.15}>
             <div style={{
@@ -149,42 +149,55 @@ export default function Landing() {
               marginBottom: 28,
             }}>
               <div style={{ position: 'relative', display: 'inline-block' }}>
-                <div className="hide-mobile-gear-corner" style={{ position: 'absolute', right: '-0.25rem', top: '-3.25rem', zIndex: 2 }}>
-                  <InteractiveMachineGear size={76} variant="outline" style={{ color: 'rgba(255,255,255,0.92)', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.35))' }} />
+                <div className="hide-mobile-gear-corner" style={{ position: 'absolute', right: '2.30rem', top: '-3.25rem', zIndex: 2 }}>
+                  <InteractiveMachineGear size={54} variant="outline" style={{ color: 'rgba(255,255,255,0.92)', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.35))' }} />
                 </div>
                 <div style={{
-                  background: 'linear-gradient(180deg, #f8f8f8 0%, #ececec 100%)',
-                  color: '#7f1d1d',
+                  // background: 'linear-gradient(180deg, #f8f8f8 0%, #ececec 100%)',
+                  color: 'white',
                   padding: '14px clamp(20px, 4vw, 36px)',
-                  fontFamily: "'Barlow', sans-serif",
-                  fontWeight: 700,
-                  fontSize: 'clamp(1.05rem, 3.2vw, 1.55rem)',
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.15,
-                  boxShadow: '0 12px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.9)',
-                  borderRadius: 2,
+                  fontFamily: "'Instrument Serif', serif",
+                  fontWeight: 900,
+                  fontSize: 'clamp(1.75rem, 3.2vw, 1.55rem)',
+                  letterSpacing: '0.15em',
+                  lineHeight: 1,
+                  // fontStyle: 'italic',
+                  // boxShadow: '0 12px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.9)',
+                  // borderRadius: 2,
                 }}>
-                  Badan Eksekutif Mahasiswa
+                  BADAN EKSEKUTIF MAHASISWA
                 </div>
+                {/* <div
+                  style={{
+                    background: '#E7000B',
+                    width: '20px',
+                    height: '16px',
+                    position: 'relative',
+                    marginTop: '-1.5em',
+                    marginRight:'-0.2em'
+                  }}
+                ></div> */}
               </div>
 
-              <div style={{ position: 'relative', display: 'inline-block', marginLeft: 'clamp(0px, 5vw, 56px)' }}>
-                <div className="hide-mobile-gear-corner" style={{ position: 'absolute', left: '-4.25rem', top: '50%', transform: 'translateY(-50%)', zIndex: 2 }}>
+              <div style={{ position: 'relative', display: 'inline-block'}}>
+                <div className="hide-mobile-gear-corner" style={{ position: 'absolute', left: '-6.25rem', top: '50%', transform: 'translateY(-50%)', zIndex: 2 }}>
                   <InteractiveMachineGear size={54} variant="outline" style={{ color: 'rgba(255,255,255,0.88)', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.4))' }} />
                 </div>
-                <div style={{
+                <div 
+                  style={{
                   background: 'linear-gradient(135deg, #dc2626 0%, #991b1b 55%, #7f1d1d 100%)',
                   color: '#fff',
                   padding: '14px clamp(20px, 4vw, 36px)',
-                  fontFamily: "'Barlow', sans-serif",
-                  fontWeight: 700,
-                  fontSize: 'clamp(1.05rem, 3.2vw, 1.6rem)',
-                  letterSpacing: '-0.02em',
+                  fontFamily: "'Instrument Serif', serif",
+                  fontWeight: 900,
+                  fontSize: 'clamp(1.75rem, 3.5vw, 2.0rem)',
+                  letterSpacing: '0.1em',
                   lineHeight: 1.15,
+                  // fontStyle: 'italic',
                   boxShadow: '0 12px 40px rgba(220,38,38,0.28), inset 0 1px 0 rgba(255,255,255,0.12)',
                   borderRadius: 2,
                 }}>
-                  Fakultas FTIRS ITS
+                  FT-IRS ITS
                 </div>
               </div>
             </div>
