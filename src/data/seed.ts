@@ -1,4 +1,4 @@
-import type { Event, Berita, GalleryItem, StaffCode } from '../types';
+import type { Event, Berita, GalleryItem, StaffCode } from '../types/index.js';
 
 export const seedEvents: Event[] = [
   {

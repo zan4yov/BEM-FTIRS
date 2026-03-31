@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { redis } from './_lib/redis';
-import type { Event } from '../src/types';
-import { seedEvents } from '../src/data/seed';
+import { redis } from './_lib/redis.js';
+import type { Event } from '../src/types/index.js';
+import { seedEvents } from '../src/data/seed.js';
 
 const KEY = 'bem_events';
 

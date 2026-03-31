@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { redis } from './_lib/redis';
-import type { Berita } from '../src/types';
-import { seedBerita } from '../src/data/seed';
+import { redis } from './_lib/redis.js';
+import type { Berita } from '../src/types/index.js';
+import { seedBerita } from '../src/data/seed.js';
 
 const KEY = 'bem_berita';
 
