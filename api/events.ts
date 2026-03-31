@@ -1,25 +1,42 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { redis } from './_lib/redis.js';
 import type { Event } from '../src/types/index.js';
 import { seedEvents } from '../src/data/seed.js';
+import { supabaseAdmin } from './_lib/supabase.js';
 
 const KEY = 'bem_events';
+const TABLE = 'app_kv';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     if (req.method === 'GET') {
-      const existing = await redis.get<Event[]>(KEY);
+      const { data, error } = await supabaseAdmin
+        .from(TABLE)
+        .select('value')
+        .eq('key', KEY)
+        .maybeSingle();
+
+      if (error) throw error;
+
+      const existing = data?.value as Event[] | undefined;
       if (Array.isArray(existing) && existing.length > 0) {
         return res.status(200).json({ events: existing });
       }
-      await redis.set(KEY, seedEvents);
+
+      const { error: upsertErr } = await supabaseAdmin
+        .from(TABLE)
+        .upsert({ key: KEY, value: seedEvents }, { onConflict: 'key' });
+      if (upsertErr) throw upsertErr;
+
       return res.status(200).json({ events: seedEvents });
     }
 
     if (req.method === 'PUT') {
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
       const events = (body?.events ?? []) as Event[];
-      await redis.set(KEY, events);
+      const { error } = await supabaseAdmin
+        .from(TABLE)
+        .upsert({ key: KEY, value: events }, { onConflict: 'key' });
+      if (error) throw error;
       return res.status(200).json({ ok: true });
     }
 
